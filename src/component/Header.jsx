@@ -19,12 +19,12 @@ const Header = () => {
     return (
         <header className="navbar">
             <div className="navbar-container">
-                <img src={logo} alt="Rick and Morty app logo" className="logo" />
+                <img src={logo} alt="logo" className="logo" />
                 <div className="search-container">
                     <input
                         type="search"
                         className="search-input"
-                        placeholder="Search by character name"
+                        placeholder="Search By Name"
                         aria-label="Search characters by name"
                         value={text}
                         onChange={(event) => dispatch(setSearchText(event.target.value))}
