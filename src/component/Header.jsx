@@ -8,32 +8,38 @@ const Header = () => {
     const dispatch = useDispatch();
     const location = useLocation();
     const isCharacterDetailPage = location.pathname.startsWith('/character/');
-    
+
     const isDarkmode = useSelector((state) => state.theme.isDarkmode);
-    const text = useSelector((state) => state.search.searchText); 
+    const text = useSelector((state) => state.search.text);
 
     if (isCharacterDetailPage) {
-        return null; 
+        return null;
     }
 
     return (
-        <div className="navbar">
+        <header className="navbar">
             <div className="navbar-container">
-                <img src={logo} alt="logo" className="logo" />
+                <img src={logo} alt="Rick and Morty app logo" className="logo" />
                 <div className="search-container">
                     <input
-                        type="text"
+                        type="search"
                         className="search-input"
-                        placeholder="Search By Name"
+                        placeholder="Search by character name"
+                        aria-label="Search characters by name"
                         value={text}
-                        onChange={(e) => dispatch(setSearchText(e.target.value))}
+                        onChange={(event) => dispatch(setSearchText(event.target.value))}
                     />
                 </div>
-                <button className='toggle-btn' onClick={() => dispatch(toggleTheme())}>
+                <button
+                    type="button"
+                    className="toggle-btn"
+                    onClick={() => dispatch(toggleTheme())}
+                    aria-label={isDarkmode ? 'Switch to light theme' : 'Switch to dark theme'}
+                >
                     {isDarkmode ? 'Light' : 'Dark'}
                 </button>
             </div>
-        </div>
+        </header>
     );
 };
 
